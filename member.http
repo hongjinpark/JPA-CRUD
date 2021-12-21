@@ -1,0 +1,31 @@
+GET localhost:8080/member
+
+###
+
+POST localhost:8080/member
+Content-Type: application/json
+
+{
+"name": "c",
+"address": "c"
+}
+
+###
+
+GET localhost:8080/member/1
+
+###
+
+PUT localhost:8080/member/1
+Content-Type: application/json
+
+{
+  "name": "a_change",
+  "address": "b_change"
+}
+
+###
+
+DELETE localhost:8080/member/2
+
+###
