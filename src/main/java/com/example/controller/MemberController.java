@@ -1,12 +1,14 @@
 package com.example.controller;
 
 
+import com.example.dto.MemberDto;
 import com.example.entity.Member;
 import com.example.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
@@ -40,12 +42,12 @@ public class MemberController {
     }
 
     @PostMapping
-    public Member saveMember(@RequestBody Member member) {
+    public Member saveMember(@RequestBody MemberDto member) {
         return memberService.saveMember(member);
     }
 
     @PutMapping("/{id}")
-    public Member updateMember(@PathVariable Long id, @RequestBody Member member) {
+    public Member updateMember(@PathVariable Long id, @RequestBody MemberDto member) {
         return memberService.updateMember(id, member);
     }
 
