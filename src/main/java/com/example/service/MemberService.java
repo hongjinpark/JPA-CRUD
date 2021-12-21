@@ -1,6 +1,7 @@
 package com.example.service;
 
 
+import com.example.dto.MemberDto;
 import com.example.entity.Member;
 import com.example.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,8 @@ public class MemberService {
         return memberRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
-    public Member saveMember(Member member) {
-        return memberRepository.save(member);
+    public Member saveMember(MemberDto member) {
+        return memberRepository.save(member.toEntity());
     }
 
     public void deleteMember(Long id) {
@@ -32,7 +33,7 @@ public class MemberService {
     }
 
     @Transactional
-    public Member updateMember(Long id, Member member) {
+    public Member updateMember(Long id, MemberDto member) {
         Member memberData = memberRepository.findById(id).orElseThrow(IllegalArgumentException::new);
         memberData.update(member.getName(), member.getAddress());
         return memberData;
