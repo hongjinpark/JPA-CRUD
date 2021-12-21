@@ -15,6 +15,20 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
 
+    @PostConstruct
+    private void init() {
+        MemberDto member = new MemberDto();
+        member.setName("kim");
+        member.setAddress("seoul");
+        memberService.saveMember(member);
+
+        MemberDto member1 = new MemberDto();
+        member1.setName("park");
+        member1.setAddress("busan");
+        memberService.saveMember(member1);
+
+    }
+
     @GetMapping
     public List<Member> selectMembers() {
         return memberService.selectMembers();
